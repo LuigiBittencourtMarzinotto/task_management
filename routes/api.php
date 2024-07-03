@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,7 @@ Route::prefix("v1")->middleware('jwt.auth')->group(function(){
     Route::post('logout', [AuthController::class,'logout']);
     Route::post('me', [AuthController::class,'me']);
     Route::post('refresh', [AuthController::class,'refresh']);
+    Route::apiResource('task', 'App\Http\Controllers\TaskController');
+    Route::apiResource('status', 'App\Http\Controllers\StatusController');
+
 });
